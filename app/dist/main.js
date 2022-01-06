@@ -34,7 +34,8 @@ try {
         // On OS X it is common for applications and their menu bar
         // to stay active until the user quits explicitly with Cmd + Q
         if (process.platform !== 'darwin') {
-            electron_1.app.quit();
+            // app.quit();
+            electron_1.app.exit();
         }
     });
     electron_1.app.on('activate', () => {
