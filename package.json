@@ -5,9 +5,11 @@
   "description": "this is a electron based application for test",
   "main": "app/dist/main.js",
   "scripts": {
-    "el": "ng build && tsc --p app && electron app/dist/main.js ",
+    "el": "electron app/dist/main.js ",
     "el-aot": "ng build --prod && electron .",
+    "el-build": "ng build && tsc --p app",
     "ng": "ng",
+    "serve": "ng serve",
     "start": "electron-forge start",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
