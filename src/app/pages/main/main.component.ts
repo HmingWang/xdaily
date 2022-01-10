@@ -15,13 +15,14 @@ export class MainComponent implements OnInit {
   curSchedule=new Schedule();
   title: string ='';
   constructor() {
+
   }
 
   initSchedule(){
-    console.log(this.scheduleMap);
-    if(localStorage['schedule']===null)
-      this.scheduleMap= JSON.parse(localStorage.getItem('schedule')!);
-
+    if(localStorage['schedule']!==null){
+      this.scheduleMap= new Map(JSON.parse(localStorage.getItem('schedule')!));
+      console.log(this.scheduleMap);
+    }
   }
 
   ngOnInit(): void {
@@ -42,7 +43,7 @@ export class MainComponent implements OnInit {
   }
 
   modSchedule(date: Date) {
-    this.curSchedule=this.getSchedule(date)? this.getSchedule(date)!:new Schedule(date);
+    this.curSchedule=this.getSchedule(date)??new Schedule(date);
     this.title=this.datePip.transform(date,'yyyy年MM月dd日')!;
     this.isVisible=true;
   }
@@ -56,6 +57,6 @@ export class MainComponent implements OnInit {
     this.isVisible=false;
     this.scheduleMap.set(this.getDay(this.curSchedule.date)!,this.curSchedule);
     console.log(this.scheduleMap);
-    localStorage.setItem('schedule',JSON.stringify(this.scheduleMap));
+    localStorage.setItem('schedule',JSON.stringify([...this.scheduleMap]));
   }
 }

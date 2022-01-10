@@ -8,7 +8,7 @@
 <ng-template #dateCellTpl let-date>
   <div class="cell" (click)="modSchedule(date)">
     <span class="date">{{date|date:'d'}}</span>
-    <div class="content">{{getSchedule(date)?.content}}</div>
+    <div class="content" [ngModel]="scheduleMap" >{{scheduleMap.get(date)?.content}}</div>
   </div>
 </ng-template>
 
