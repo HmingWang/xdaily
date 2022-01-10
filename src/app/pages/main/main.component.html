@@ -1,0 +1,24 @@
+<nz-calendar
+  [nzDateFullCell]="dateCellTpl"
+  [(ngModel)]="selectedDate">
+  <!-- 定义 Cell 的另一种方式 -->
+<!--  <div *nzDateCell>Foo</div>-->
+</nz-calendar>
+<!-- 传入 TemplateRef 的方式 -->
+<ng-template #dateCellTpl let-date>
+  <div class="cell" (click)="modSchedule(date)">
+    <span class="date">{{date|date:'d'}}</span>
+    <div class="content">{{getSchedule(date)?.content}}</div>
+  </div>
+</ng-template>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  [nzTitle]="title"
+>
+  <ng-container *nzModalContent>
+    <textarea nz-input placeholder="请输入日程内容" [(ngModel)]="this.curSchedule.content" ></textarea>
+  </ng-container>
+</nz-modal>

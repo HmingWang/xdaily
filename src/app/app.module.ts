@@ -13,9 +13,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { MainComponent } from './main/main.component';
+import { MainComponent } from './pages/main/main.component';
 import {NzCalendarModule} from "ng-zorro-antd/calendar";
 import {NzBadgeModule} from "ng-zorro-antd/badge";
+import {NzModalModule} from "ng-zorro-antd/modal";
+import {NzInputModule} from "ng-zorro-antd/input";
 registerLocaleData(zh);
 
 @NgModule({
@@ -34,6 +36,8 @@ registerLocaleData(zh);
     NzMenuModule,
     NzCalendarModule,
     NzBadgeModule,
+    NzModalModule,
+    NzInputModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
