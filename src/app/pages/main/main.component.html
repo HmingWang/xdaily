@@ -1,16 +1,20 @@
 <nz-calendar
   [nzDateFullCell]="dateCellTpl"
-  [(ngModel)]="selectedDate">
+  [(ngModel)]="selectedDate"
+  (nzSelectChange)="onSelectChange()">
   <!-- 定义 Cell 的另一种方式 -->
 <!--  <div *nzDateCell>Foo</div>-->
 </nz-calendar>
 <!-- 传入 TemplateRef 的方式 -->
-<ng-template #dateCellTpl let-date>
-  <div class="cell" (click)="modSchedule(date)">
+<ng-template #dateCellTpl let-date class="events">
+  <div (click)="modSchedule(date)" [ngClass]="{'selected':selectedDate===date}">
     <span class="date">{{date|date:'d'}}</span>
-    <div class="content" [ngModel]="scheduleMap" >{{scheduleMap.get(date)?.content}}</div>
+    <div class="content">{{getScheduleContent(date)}}</div>
   </div>
 </ng-template>
+
+
+
 
 <nz-modal
   [(nzVisible)]="isVisible"

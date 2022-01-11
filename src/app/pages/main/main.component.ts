@@ -8,12 +8,16 @@ import {DatePipe} from "@angular/common";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+
+
   datePip:DatePipe=new DatePipe('zh-CN');
   scheduleMap: Map<string, Schedule> = new Map<string, Schedule>();
-  selectedDate: string = '';
+  selectedDate: Date=new Date();
   isVisible=false;
   curSchedule=new Schedule();
   title: string ='';
+
+
   constructor() {
 
   }
@@ -56,7 +60,15 @@ export class MainComponent implements OnInit {
   handleOk() {
     this.isVisible=false;
     this.scheduleMap.set(this.getDay(this.curSchedule.date)!,this.curSchedule);
-    console.log(this.scheduleMap);
     localStorage.setItem('schedule',JSON.stringify([...this.scheduleMap]));
+  }
+
+  getScheduleContent(date: Date) {
+    return this.scheduleMap.get(this.getDay(date)!)?.content;
+
+  }
+
+  onSelectChange() {
+    console.log(this.selectedDate)
   }
 }
