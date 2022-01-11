@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "author": "whm",
   "description": "this is a electron based application for test",
-  "main": "app/dist/main.js",
+  "main": "dist/main.js",
   "scripts": {
-    "el": "electron app/dist/main.js ",
-    "el-aot": "ng build --prod && electron .",
+    "el": "electron .",
+    "el-aot": "ng build -c='production'  --build--optimizer && electron .",
     "el-build": "ng build && tsc --p app",
     "ng": "ng",
     "serve": "ng serve",

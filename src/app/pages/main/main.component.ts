@@ -17,7 +17,6 @@ export class MainComponent implements OnInit {
   curSchedule=new Schedule();
   title: string ='';
   color:string='';
-
   constructor() {
 
   }
@@ -25,7 +24,6 @@ export class MainComponent implements OnInit {
   initSchedule(){
     if(localStorage['schedule']!==null){
       this.scheduleMap= new Map(JSON.parse(localStorage.getItem('schedule')!));
-      console.log(this.scheduleMap);
     }
   }
 
@@ -69,7 +67,7 @@ export class MainComponent implements OnInit {
   }
 
   onSelectChange() {
-    console.log(this.selectedDate)
+    // console.log(this.selectedDate)
   }
 
   getCellClass(date: Date) {

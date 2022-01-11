@@ -15,7 +15,6 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { MainComponent } from './pages/main/main.component';
 import {NzCalendarModule} from "ng-zorro-antd/calendar";
-import {NzBadgeModule} from "ng-zorro-antd/badge";
 import {NzModalModule} from "ng-zorro-antd/modal";
 import {NzInputModule} from "ng-zorro-antd/input";
 registerLocaleData(zh);
@@ -35,7 +34,6 @@ registerLocaleData(zh);
     NzLayoutModule,
     NzMenuModule,
     NzCalendarModule,
-    NzBadgeModule,
     NzModalModule,
     NzInputModule,
   ],

@@ -14,17 +14,20 @@ function createWindow() {
   });
 
   // win.webContents.openDevTools();
-  win.loadURL(`file://${__dirname}/../../dist/xdaily/index.html`);
+  win.loadFile(`dist/xdaily/index.html`);
 
   return win;
 }
 
 try {
-  // This method will be called when Electron has finished
-  // initialization and is ready to create browser windows.
-  // Some APIs can only be used after this event occurs.
-  // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
-  app.on('ready', () => setTimeout(createWindow, 400));
+
+  app.whenReady().then(() => {
+    createWindow()
+
+    app.on('activate', function () {
+      if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    })
+  })
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
@@ -35,13 +38,7 @@ try {
     }
   });
 
-  app.on('activate', () => {
-    // On OS X it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (win === null) {
-      createWindow();
-    }
-  });
+
 
 } catch (e) {
   // Catch Error
