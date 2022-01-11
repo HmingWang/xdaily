@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   isVisible=false;
   curSchedule=new Schedule();
   title: string ='';
-
+  color:string='';
 
   constructor() {
 
@@ -70,5 +70,17 @@ export class MainComponent implements OnInit {
 
   onSelectChange() {
     console.log(this.selectedDate)
+  }
+
+  getCellClass(date: Date) {
+    let c='cell';
+    this.color='cyan'
+    if(this.selectedDate.toLocaleDateString()===date.toLocaleDateString()){
+      c+=' cell-selected'
+    }
+    if(new Date().toLocaleDateString()===date.toLocaleDateString()){
+      c+=' cell-today'
+    }
+    return c;
   }
 }
