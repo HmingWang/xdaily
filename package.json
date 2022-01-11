@@ -6,8 +6,8 @@
   "main": "dist/main.js",
   "scripts": {
     "el": "electron .",
-    "el-aot": "ng build -c='production'  --build--optimizer && electron .",
-    "el-build": "ng build && tsc --p app",
+    "el-aot": "ng build -c=production  --build--optimizer && electron .",
+    "el-build": "ng build -c=production  --build--optimizer && tsc --p app",
     "ng": "ng",
     "serve": "ng serve",
     "start": "electron-forge start",
